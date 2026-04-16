@@ -1,0 +1,298 @@
+/* ============================================================
+   ATTENDLY — Design Tokens
+   Theme: Monochrome Black & White
+   Version: 1.0.0
+   ============================================================ */
+
+/* ── Primitive Scale ────────────────────────────────────────── */
+
+:root {
+
+  /* --- Black / White / Gray Ramp --- */
+  --ink-0:   #FFFFFF;   /* pure white */
+  --ink-50:  #F7F7F7;   /* off-white surface */
+  --ink-100: #EFEFEF;   /* light surface */
+  --ink-150: #E2E2E2;   /* subtle divider */
+  --ink-200: #CCCCCC;   /* muted border */
+  --ink-300: #AAAAAA;   /* placeholder text */
+  --ink-400: #888888;   /* secondary text */
+  --ink-500: #666666;   /* tertiary text */
+  --ink-600: #444444;   /* muted label */
+  --ink-700: #2A2A2A;   /* strong text */
+  --ink-800: #1A1A1A;   /* near-black */
+  --ink-900: #0D0D0D;   /* near-total black */
+  --ink-950: #000000;   /* pure black */
+
+
+  /* ── Semantic Color Tokens ─────────────────────────────────── */
+
+  /* Backgrounds */
+  --color-bg-base:       var(--ink-0);       /* page / app bg */
+  --color-bg-surface:    var(--ink-50);      /* card, panel bg */
+  --color-bg-raised:     var(--ink-100);     /* elevated card */
+  --color-bg-overlay:    rgba(0,0,0,0.55);   /* modal scrim */
+  --color-bg-inverted:   var(--ink-950);     /* dark block bg */
+
+  /* Text */
+  --color-text-primary:    var(--ink-950);   /* headings, labels */
+  --color-text-secondary:  var(--ink-500);   /* supporting copy */
+  --color-text-tertiary:   var(--ink-300);   /* placeholder, hint */
+  --color-text-disabled:   var(--ink-200);
+  --color-text-inverted:   var(--ink-0);     /* text on dark bg */
+  --color-text-on-accent:  var(--ink-0);     /* text on black accent */
+
+  /* Borders */
+  --color-border-default:  var(--ink-150);   /* standard outline */
+  --color-border-strong:   var(--ink-300);   /* focused / hover */
+  --color-border-heavy:    var(--ink-950);   /* active / selected */
+
+  /* Interactive — Accent */
+  --color-accent:          var(--ink-950);   /* CTAs, highlights */
+  --color-accent-hover:    var(--ink-700);   /* hover state */
+  --color-accent-fg:       var(--ink-0);     /* text on accent */
+
+  /* Status — kept grayscale for B&W theme */
+  --color-success:         var(--ink-950);   /* success text/border */
+  --color-success-bg:      var(--ink-100);
+  --color-success-fg:      var(--ink-950);
+
+  --color-danger:          var(--ink-700);
+  --color-danger-bg:       var(--ink-100);
+  --color-danger-fg:       var(--ink-950);
+
+  --color-warning:         var(--ink-600);
+  --color-warning-bg:      var(--ink-100);
+
+  --color-info:            var(--ink-500);
+  --color-info-bg:         var(--ink-50);
+
+  /* Live / Pulse Banner (amber is the one permitted accent color) */
+  --color-live-bg:         #FFF3CD;
+  --color-live-border:     #D4A017;
+  --color-live-text:       #7A5000;
+  --color-live-pulse:      #D4A017;
+
+
+  /* ── Typography ────────────────────────────────────────────── */
+
+  --font-display:  'Syne', 'DM Serif Display', Georgia, serif;
+  --font-body:     'DM Sans', 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  --font-mono:     'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+  --font-ui:       var(--font-body);
+
+  /* Scale */
+  --text-2xs: 10px;
+  --text-xs:  11px;
+  --text-sm:  13px;
+  --text-md:  15px;   /* body default */
+  --text-lg:  17px;
+  --text-xl:  20px;
+  --text-2xl: 24px;
+  --text-3xl: 30px;
+  --text-4xl: 38px;   /* big code display */
+  --text-hero: 56px;  /* 6-digit session code */
+
+  /* Weight */
+  --fw-regular: 400;
+  --fw-medium:  500;
+  --fw-semibold:600;
+  --fw-bold:    700;
+
+  /* Line Heights */
+  --leading-tight:  1.2;
+  --leading-snug:   1.4;
+  --leading-normal: 1.6;
+  --leading-loose:  1.8;
+
+  /* Letter Spacing */
+  --tracking-tight:  -0.03em;
+  --tracking-normal:  0em;
+  --tracking-wide:    0.04em;
+  --tracking-widest:  0.12em;   /* monospaced codes */
+
+
+  /* ── Spacing Scale ─────────────────────────────────────────── */
+
+  --space-1:   4px;
+  --space-2:   8px;
+  --space-3:  12px;
+  --space-4:  16px;
+  --space-5:  20px;
+  --space-6:  24px;
+  --space-8:  32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+  --space-20: 80px;
+
+
+  /* ── Border Radius ─────────────────────────────────────────── */
+
+  --radius-none:   0px;
+  --radius-sm:     4px;
+  --radius-md:     8px;
+  --radius-lg:    12px;
+  --radius-xl:    16px;
+  --radius-2xl:   24px;
+  --radius-full: 9999px;  /* pills, avatars */
+
+
+  /* ── Shadow / Elevation ────────────────────────────────────── */
+
+  --shadow-none: none;
+  --shadow-xs:  0 1px 2px rgba(0,0,0,0.06);
+  --shadow-sm:  0 2px 6px rgba(0,0,0,0.09);
+  --shadow-md:  0 4px 16px rgba(0,0,0,0.10);
+  --shadow-lg:  0 8px 32px rgba(0,0,0,0.12);
+
+  /* Sidebar slide-out */
+  --shadow-sidebar: -4px 0 24px rgba(0,0,0,0.14);
+
+
+  /* ── Animation ─────────────────────────────────────────────── */
+
+  --duration-fast:    100ms;
+  --duration-normal:  200ms;
+  --duration-slow:    350ms;
+  --duration-slower:  500ms;
+
+  --ease-out:   cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-in:    cubic-bezier(0.55, 0.055, 0.675, 0.19);
+  --ease-spring:cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Specific transitions */
+  --transition-default:  all var(--duration-normal) var(--ease-out);
+  --transition-fast:     all var(--duration-fast) var(--ease-out);
+  --transition-bounce:   all var(--duration-slow) var(--ease-spring);
+
+
+  /* ── Layout & Breakpoints ──────────────────────────────────── */
+
+  --screen-sm:  480px;
+  --screen-md:  768px;
+  --screen-lg: 1024px;
+  --screen-xl: 1280px;
+
+  --max-content: 640px;   /* mobile-first app max */
+  --header-h:     56px;
+  --bottom-nav-h: 64px;
+
+  /* Grid */
+  --grid-cols-2: repeat(2, 1fr);
+  --grid-gap:    var(--space-4);
+
+
+  /* ── Z-index Stack ─────────────────────────────────────────── */
+
+  --z-base:    0;
+  --z-card:   10;
+  --z-fab:    20;     /* floating action button */
+  --z-header: 30;
+  --z-sidebar:40;
+  --z-overlay:50;
+  --z-modal:  60;
+  --z-toast:  70;
+
+
+  /* ── Component Tokens ──────────────────────────────────────── */
+
+  /* Button */
+  --btn-h-sm:   32px;
+  --btn-h-md:   44px;
+  --btn-h-lg:   52px;
+  --btn-px:     var(--space-5);
+  --btn-radius: var(--radius-md);
+  --btn-font:   var(--fw-semibold);
+
+  /* Input */
+  --input-h:       48px;
+  --input-h-sm:    40px;
+  --input-px:      var(--space-4);
+  --input-radius:  var(--radius-md);
+  --input-border:  var(--color-border-default);
+  --input-border-focus: var(--color-border-heavy);
+
+  /* Card */
+  --card-radius:   var(--radius-xl);
+  --card-padding:  var(--space-5);
+  --card-border:   1px solid var(--color-border-default);
+
+  /* Avatar / Initials Badge */
+  --avatar-sm:  28px;
+  --avatar-md:  40px;
+  --avatar-lg:  56px;
+  --avatar-bg:  var(--ink-950);
+  --avatar-fg:  var(--ink-0);
+  --avatar-radius: var(--radius-full);
+
+  /* Session Code */
+  --code-font:    var(--font-mono);
+  --code-size:    var(--text-hero);
+  --code-weight:  var(--fw-bold);
+  --code-spacing: var(--tracking-widest);
+  --code-color:   var(--ink-950);
+
+  /* Progress Ring */
+  --ring-size:    52px;
+  --ring-stroke:   4px;
+  --ring-color:   var(--ink-950);
+  --ring-bg:      var(--ink-150);
+
+  /* Status Badge */
+  --badge-font:    var(--fw-medium);
+  --badge-size:    var(--text-xs);
+  --badge-px:       6px;
+  --badge-py:       3px;
+  --badge-radius:  var(--radius-full);
+
+  /* Timer */
+  --timer-size:   var(--text-3xl);
+  --timer-weight: var(--fw-bold);
+  --timer-mono:   var(--font-mono);
+
+  /* Notification Bell */
+  --bell-pulse-color: var(--ink-950);
+
+  /* Table */
+  --table-row-h:    52px;
+  --table-cell-px:  var(--space-4);
+  --table-header-bg:var(--ink-50);
+  --table-border:   var(--color-border-default);
+  --table-hover-bg: var(--ink-100);
+}
+
+
+/* ── Dark Mode Overrides ─────────────────────────────────────── */
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --color-bg-base:       var(--ink-950);
+    --color-bg-surface:    var(--ink-900);
+    --color-bg-raised:     var(--ink-800);
+    --color-bg-overlay:    rgba(0,0,0,0.75);
+    --color-bg-inverted:   var(--ink-0);
+
+    --color-text-primary:    var(--ink-0);
+    --color-text-secondary:  var(--ink-400);
+    --color-text-tertiary:   var(--ink-600);
+    --color-text-disabled:   var(--ink-700);
+    --color-text-inverted:   var(--ink-950);
+
+    --color-border-default:  var(--ink-700);
+    --color-border-strong:   var(--ink-500);
+    --color-border-heavy:    var(--ink-0);
+
+    --color-accent:          var(--ink-0);
+    --color-accent-hover:    var(--ink-150);
+    --color-accent-fg:       var(--ink-950);
+
+    --table-header-bg: var(--ink-900);
+    --table-hover-bg:  var(--ink-800);
+
+    --avatar-bg:  var(--ink-0);
+    --avatar-fg:  var(--ink-950);
+    --code-color: var(--ink-0);
+    --ring-color: var(--ink-0);
+    --ring-bg:    var(--ink-700);
+  }
+}
