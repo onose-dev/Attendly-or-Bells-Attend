@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>/Student-Registration</title>
+</head>
+<body>
+    <h1>Student Registration</h1>
+        <p>Enter your academic details exatly as they appear on your admission letter to synchronize with the Digital Registry</p>
+            <form action="post">
+            <div class="inputContainer">
+                <label for="fulName">
+                    Full Name
+                </label>
+                <input type="text" placeholder="e.g : Ebube Chkwudi John" id="fullName" name="fullName">
+                <div class="err"></div>
+            </div>
+            <div class="inputContainer">
+                <label for="Level">
+                    Level
+                </label>
+                <select name="Level" id="Level">
+                    <option value="100">100</option>
+                    <option value="200">200</option>
+                    <option value="300">300</option>
+                    <option value="400">400</option>
+                </select>
+                <div class="err"></div>
+            </div>
+            <div class="inputContainer">
+                <label for="college">
+                    College
+                </label>
+                <select name="college" id="college">
+                    <option value="COLENG">COLENG</option>
+                    <option value="COLNAS">COLNAS</option>
+                    <option value="COLFAST">COLFAST</option>
+                    <option value="COLCOMP">COLCOMP</option>
+                </select>
+                <div class="err"></div>
+            </div>
+            <div class="inputContainer">
+                <label for="Department">
+                    Department
+                </label>
+                <input type="text" placeholder="e.g : Computer Science" id="Department" name="Department">
+                <div class="err"></div>
+            </div>
+                <button>Register</button>
+            </form>
+</body>
+</html>
