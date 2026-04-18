@@ -143,7 +143,7 @@ const Auth = {
 
             // Verify name matches (case-insensitive partial match)
             const nameMatch = student.full_name.toLowerCase().includes(fullName.toLowerCase()) ||
-                              fullName.toLowerCase().includes(student.full_name.toLowerCase());
+            fullName.toLowerCase().includes(student.full_name.toLowerCase());
 
             if (!nameMatch) {
                 return {
