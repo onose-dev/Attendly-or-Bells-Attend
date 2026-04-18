@@ -1,32 +1,363 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AtendlyWeb</title>
+    <title>Attendly — Digital Registry</title>
+    <link rel="stylesheet" href="./attendly-tokens.css">
+    <style>
+        /*
+     * ─────────────────────────────────────────────
+     *  index.html — Role Selection Landing
+     *  Alpha dev: var(--alpha-dev)
+     *  All tokens sourced from attendly-tokens.css
+     * ─────────────────────────────────────────────
+     */
+
+        .landing-page {
+            min-height: 100dvh;
+            max-width: var(--max-content);
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            padding: 0 var(--space-6);
+        }
+
+        /* ── Header ── */
+        .landing-header {
+            height: var(--header-h);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            border-bottom: 1px solid var(--color-border-default);
+        }
+
+        .landing-logo {
+            font-family: var(--font-display);
+            font-size: var(--text-lg);
+            font-weight: var(--fw-bold);
+            letter-spacing: var(--tracking-tight);
+            color: var(--color-text-primary);
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+        }
+
+        .landing-logo .logo-mark {
+            width: 28px;
+            height: 28px;
+            background: var(--color-accent);
+            border-radius: var(--radius-md);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+
+        .landing-header-meta {
+            font-size: var(--text-xs);
+            color: var(--color-text-tertiary);
+            font-family: var(--font-mono);
+            letter-spacing: var(--tracking-wide);
+        }
+
+        /* ── Hero ── */
+        .landing-hero {
+            padding: var(--space-12) 0 var(--space-8);
+        }
+
+        .landing-hero .eyebrow {
+            font-size: var(--text-xs);
+            font-weight: var(--fw-semibold);
+            letter-spacing: var(--tracking-widest);
+            text-transform: uppercase;
+            color: var(--color-text-secondary);
+            margin-bottom: var(--space-3);
+        }
+
+        .landing-hero h1 {
+            font-size: var(--text-4xl);
+            line-height: var(--leading-tight);
+            letter-spacing: var(--tracking-tight);
+            margin-bottom: var(--space-3);
+        }
+
+        /* The span accent word stays black/white — no color breaks the monochrome rule */
+        .landing-hero h1 span {
+            display: inline-block;
+            border-bottom: 3px solid var(--color-accent);
+            padding-bottom: 2px;
+        }
+
+        .landing-hero p {
+            font-size: var(--text-md);
+            color: var(--color-text-secondary);
+            line-height: var(--leading-normal);
+            max-width: 340px;
+        }
+
+        /* ── Entry Point Cards ── */
+        .entry-grid {
+            display: flex;
+            flex-direction: column;
+            gap: var(--space-3);
+            padding-bottom: var(--space-10);
+        }
+
+        .entry-card {
+            display: flex;
+            align-items: center;
+            gap: var(--space-4);
+            padding: var(--space-5);
+            background: var(--color-bg-base);
+            border: 1px solid var(--color-border-default);
+            border-radius: var(--card-radius);
+            text-decoration: none;
+            color: var(--color-text-primary);
+            transition: var(--transition-default);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .entry-card:hover {
+            border-color: var(--color-border-strong);
+            background: var(--color-bg-surface);
+            transform: translateY(-1px);
+            box-shadow: var(--shadow-sm);
+        }
+
+        .entry-card:active {
+            transform: translateY(0);
+            box-shadow: var(--shadow-none);
+        }
+
+        /* Student card gets the featured treatment — heavier border */
+        .entry-card.is-featured {
+            border-color: var(--color-border-heavy);
+            border-width: 1.5px;
+        }
+
+        .entry-card.is-featured:hover {
+            background: var(--color-bg-surface);
+        }
+
+        .entry-card-icon {
+            width: 44px;
+            height: 44px;
+            border-radius: var(--radius-lg);
+            background: var(--color-bg-raised);
+            border: 1px solid var(--color-border-default);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+            color: var(--color-text-primary);
+        }
+
+        .entry-card.is-featured .entry-card-icon {
+            background: var(--color-accent);
+            border-color: var(--color-accent);
+            color: var(--color-accent-fg);
+        }
+
+        .entry-card-body {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .entry-card-title {
+            font-family: var(--font-display);
+            font-size: var(--text-lg);
+            font-weight: var(--fw-bold);
+            letter-spacing: var(--tracking-tight);
+            margin-bottom: var(--space-1);
+            display: flex;
+            align-items: center;
+            gap: var(--space-2);
+        }
+
+        .entry-card-desc {
+            font-size: var(--text-sm);
+            color: var(--color-text-secondary);
+            line-height: var(--leading-snug);
+        }
+
+        /* "Authorized access only" pill on Admin */
+        .entry-restricted-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 4px;
+            padding: 3px 8px;
+            font-size: var(--text-2xs);
+            font-weight: var(--fw-semibold);
+            letter-spacing: 0.05em;
+            text-transform: uppercase;
+            background: var(--color-bg-raised);
+            border: 1px solid var(--color-border-default);
+            border-radius: var(--radius-full);
+            color: var(--color-text-secondary);
+        }
+
+        .entry-card-arrow {
+            color: var(--color-text-tertiary);
+            flex-shrink: 0;
+            transition: transform var(--duration-normal) var(--ease-out);
+        }
+
+        .entry-card:hover .entry-card-arrow {
+            transform: translateX(3px);
+            color: var(--color-text-primary);
+        }
+
+        /* ── Footer ── */
+        .landing-footer {
+            margin-top: auto;
+            padding: var(--space-6) 0;
+            border-top: 1px solid var(--color-border-default);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+
+        .landing-footer-text {
+            font-size: var(--text-xs);
+            color: var(--color-text-tertiary);
+        }
+
+        .landing-footer-text span {
+            font-family: var(--font-mono);
+        }
+    </style>
 </head>
+
 <body>
-    <!-- hi, this is Michael, i just wanted to settle who the alpa developer is , it's me   so you guys better respect all the css here, after each styling refer to var(--alpha-dev ) , :root{ --alpha-dev : Michael Omale },for audit and my blessings, God speed  kids let's build something jaw dropping, and nifemi better not come and bully me with you js skills, comment anything that i will need,  so that i won't injure, and you ose, you didnt even create an index.html file  -->
 
+    <div class="landing-page">
 
-    <h1>Select Your <span>Entry Point</span></h1>
-        <p>Choose your acccess role to access the Digital Registry Enviroment</p>
-        <div class="entryPoints">
-            <div class="adminEntry">
-                <h1>Admin</h1>
-                <p>Authorized access only</p>
-                <a href="./Admin-App/adminLogin.html">Login</a>
+        <!-- Header -->
+        <header class="landing-header">
+            <div class="landing-logo">
+                <div class="logo-mark">
+                    <!-- Logo mark: grid of 4 dots representing the attendance grid concept -->
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                        <rect x="2" y="2" width="5" height="5" rx="1.5" fill="white" />
+                        <rect x="9" y="2" width="5" height="5" rx="1.5" fill="white" opacity="0.5" />
+                        <rect x="2" y="9" width="5" height="5" rx="1.5" fill="white" opacity="0.5" />
+                        <rect x="9" y="9" width="5" height="5" rx="1.5" fill="white" />
+                    </svg>
+                </div>
+                Attendly
             </div>
-            <div class="studentEntry">
-                <h1>Student</h1>
-                <p>Track your attendance, manage courses, and view academic progress </p>
-                <a href="./Student-App/studentReg.html">Register</a>
+            <span class="landing-header-meta">v1.0</span>
+        </header>
+
+        <!-- Hero -->
+        <section class="landing-hero" aria-labelledby="hero-title">
+            <p class="eyebrow">Digital Registry</p>
+            <h1 id="hero-title">Select Your <span>Entry Point</span></h1>
+            <p>Choose your access role to enter the Digital Registry environment.</p>
+        </section>
+
+        <!-- Role Cards -->
+        <main>
+            <div class="entry-grid" role="list">
+
+                <!-- Student — featured / primary role -->
+                <a class="entry-card is-featured" href="../Student-App/studentAuth.html" role="listitem">
+                    <div class="entry-card-icon" aria-hidden="true">
+                        <!-- Student icon: person with checkmark -->
+                        <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                            <circle cx="11" cy="7" r="3.5" stroke="currentColor" stroke-width="1.5" />
+                            <path d="M4 19c0-3.866 3.134-7 7-7h0c1.168 0 2.27.286 3.232.792" stroke="currentColor"
+                                stroke-width="1.5" stroke-linecap="round" />
+                            <circle cx="16.5" cy="15.5" r="3.5" stroke="currentColor" stroke-width="1.5" />
+                            <path d="M14.5 15.5l1.5 1.5 2.5-2.5" stroke="currentColor" stroke-width="1.4"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </div>
+                    <div class="entry-card-body">
+                        <div class="entry-card-title">Student</div>
+                        <p class="entry-card-desc">Track your attendance, manage courses, and view your academic
+                            progress.</p>
+                    </div>
+                    <svg class="entry-card-arrow" width="18" height="18" viewBox="0 0 18 18" fill="none"
+                        aria-hidden="true">
+                        <path d="M4 9h10M10 5l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </a>
+
+                <!-- Lecturer -->
+                <a class="entry-card" href="./Lecturer-App/lecturerAuth.html" role="listitem">
+                    <div class="entry-card-icon" aria-hidden="true">
+                        <!-- Lecturer icon: person at podium / board -->
+                        <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                            <circle cx="11" cy="6" r="3" stroke="currentColor" stroke-width="1.5" />
+                            <path d="M5 19c0-3.314 2.686-6 6-6s6 2.686 6 6" stroke="currentColor" stroke-width="1.5"
+                                stroke-linecap="round" />
+                            <rect x="3" y="2" width="16" height="10" rx="2" stroke="currentColor" stroke-width="1.3"
+                                stroke-dasharray="2 1.5" />
+                        </svg>
+                    </div>
+                    <div class="entry-card-body">
+                        <div class="entry-card-title">Lecturer</div>
+                        <p class="entry-card-desc">Manage sessions, authorize attendance, and generate reports.</p>
+                    </div>
+                    <svg class="entry-card-arrow" width="18" height="18" viewBox="0 0 18 18" fill="none"
+                        aria-hidden="true">
+                        <path d="M4 9h10M10 5l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </a>
+
+                <!-- Admin — de-emphasized, restricted access -->
+                <a class="entry-card" href="./Admin-App/adminLogin.html" role="listitem"
+                    aria-describedby="admin-restricted">
+                    <div class="entry-card-icon" aria-hidden="true">
+                        <!-- Admin icon: shield with lock -->
+                        <svg width="22" height="22" viewBox="0 0 22 22" fill="none">
+                            <path d="M11 3L4 6v5c0 4 3 7.4 7 8 4-.6 7-4 7-8V6L11 3z" stroke="currentColor"
+                                stroke-width="1.5" stroke-linejoin="round" />
+                            <rect x="8.5" y="10" width="5" height="4" rx="1" stroke="currentColor" stroke-width="1.3" />
+                            <path d="M9.5 10V8.5a1.5 1.5 0 013 0V10" stroke="currentColor" stroke-width="1.3"
+                                stroke-linecap="round" />
+                        </svg>
+                    </div>
+                    <div class="entry-card-body">
+                        <div class="entry-card-title">
+                            Admin
+                            <span class="entry-restricted-badge" id="admin-restricted">
+                                <!-- Lock icon -->
+                                <svg width="9" height="9" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+                                    <rect x="2" y="4.5" width="6" height="4.5" rx="1" stroke="currentColor"
+                                        stroke-width="1.2" />
+                                    <path d="M3.5 4.5V3a1.5 1.5 0 013 0v1.5" stroke="currentColor" stroke-width="1.2"
+                                        stroke-linecap="round" />
+                                </svg>
+                                Authorized access only
+                            </span>
+                        </div>
+                        <p class="entry-card-desc">System administration, user management, and audit controls.</p>
+                    </div>
+                    <svg class="entry-card-arrow" width="18" height="18" viewBox="0 0 18 18" fill="none"
+                        aria-hidden="true">
+                        <path d="M4 9h10M10 5l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </a>
+
             </div>
-            <div class="lecturerEntry">
-                <h1>Lecturer</h1>
-                <p>Manage Sessions, authorize attendance and generate report </p>
-                <a href="./Lecturer-App/lecturerReg.html">Register</a>
-            </div>
-        </div>
-    </body>
+        </main>
+
+        <!-- Footer -->
+        <footer class="landing-footer">
+            <span class="landing-footer-text">Bells University of Technology</span>
+            <span class="landing-footer-text"><span>BAP</span> © 2025</span>
+        </footer>
+
+    </div>
+
+</body>
+
 </html>

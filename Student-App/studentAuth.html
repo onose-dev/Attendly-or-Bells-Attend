@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendly — Student Sign In</title>
+    <link rel="stylesheet" href="../Shared/attendly-tokens.css">
+    <style>
+        /*
+     * ─────────────────────────────────────────────
+     *  studentLogin.html — Student Sign In
+     *  Alpha dev: var(--alpha-dev)
+     * ─────────────────────────────────────────────
+     */
+
+        .auth-split {
+            /* Decorative top strip — thin accent line */
+            border-top: 3px solid var(--color-accent);
+        }
+
+        /* Push the CTA + footer to the bottom on tall screens */
+        .at-main {
+            justify-content: space-between;
+        }
+
+        .form-section {
+            flex: 1;
+        }
+
+        /* Divider between form and footer link */
+        .auth-divider {
+            display: flex;
+            align-items: center;
+            gap: var(--space-3);
+            margin: var(--space-2) 0;
+        }
+
+        .auth-divider-line {
+            flex: 1;
+            height: 1px;
+            background: var(--color-border-default);
+        }
+
+        .auth-divider span {
+            font-size: var(--text-xs);
+            color: var(--color-text-tertiary);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="at-page auth-split">
+
+        <!-- Top bar: logo only (no back button on login — it's the start) -->
+        <header class="at-topbar">
+            <a class="at-topbar-logo" href="../Shared/index.html" aria-label="Attendly home">
+                <div class="at-logo-mark">
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                        <rect x="2" y="2" width="5" height="5" rx="1.5" fill="white" />
+                        <rect x="9" y="2" width="5" height="5" rx="1.5" fill="white" opacity="0.5" />
+                        <rect x="2" y="9" width="5" height="5" rx="1.5" fill="white" opacity="0.5" />
+                        <rect x="9" y="9" width="5" height="5" rx="1.5" fill="white" />
+                    </svg>
+                </div>
+                Attendly
+            </a>
+            <!-- Role indicator badge -->
+            <span class="at-badge">
+                <svg width="10" height="10" viewBox="0 0 10 10" fill="none" aria-hidden="true">
+                    <circle cx="5" cy="3.5" r="2" stroke="currentColor" stroke-width="1.2" />
+                    <path d="M1.5 9c0-1.933 1.567-3.5 3.5-3.5S8.5 7.067 8.5 9" stroke="currentColor" stroke-width="1.2"
+                        stroke-linecap="round" />
+                </svg>
+                Student
+            </span>
+        </header>
+
+        <main class="at-main">
+            <div class="form-section">
+
+                <!-- Page heading -->
+                <p class="at-section-eyebrow">Student Portal</p>
+                <h1 class="at-page-title">Welcome back.</h1>
+                <p class="at-page-subtitle">Sign in with your full name and matric number to access your attendance
+                    records.</p>
+
+                <!-- Login form -->
+                <form class="at-form" id="loginForm" novalidate>
+
+                    <!-- Full Name -->
+                    <div class="at-field">
+                        <label class="at-label" for="fullName">
+                            <!-- Person icon -->
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                                <circle cx="7" cy="4.5" r="2.5" stroke="currentColor" stroke-width="1.3" />
+                                <path d="M2 13c0-2.761 2.239-5 5-5s5 2.239 5 5" stroke="currentColor" stroke-width="1.3"
+                                    stroke-linecap="round" />
+                            </svg>
+                            Full Name
+                        </label>
+                        <input class="at-input" type="text" id="fullName" name="fullName"
+                            placeholder="e.g. Emmanuel Chukwudi John" autocomplete="name"
+                            aria-describedby="fullName-err" required />
+                        <!-- Error message — shown by JS -->
+                        <div class="at-field-error" id="fullName-err" role="alert" aria-live="polite"></div>
+                    </div>
+
+                    <!-- Matric Number -->
+                    <div class="at-field">
+                        <label class="at-label" for="matricNo">
+                            <!-- ID card icon -->
+                            <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                                <rect x="1.5" y="2.5" width="11" height="9" rx="1.5" stroke="currentColor"
+                                    stroke-width="1.3" />
+                                <circle cx="5" cy="6.5" r="1.5" stroke="currentColor" stroke-width="1.2" />
+                                <line x1="8" y1="5.5" x2="11" y2="5.5" stroke="currentColor" stroke-width="1.2"
+                                    stroke-linecap="round" />
+                                <line x1="8" y1="7.5" x2="10" y2="7.5" stroke="currentColor" stroke-width="1.2"
+                                    stroke-linecap="round" />
+                            </svg>
+                            Matric Number
+                        </label>
+                        <input class="at-input is-mono" type="text" id="matricNo" name="matricNo"
+                            placeholder="e.g. 2020/123456" autocomplete="off" inputmode="text"
+                            aria-describedby="matricNo-err matricNo-hint" required />
+                        <p class="at-field-hint" id="matricNo-hint">Format: YYYY/NNNNNN</p>
+                        <div class="at-field-error" id="matricNo-err" role="alert" aria-live="polite"></div>
+                    </div>
+
+                    <button class="at-btn at-btn-primary" type="submit" id="loginBtn">
+                        Sign in
+                        <!-- Arrow icon -->
+                        <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                            <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5"
+                                stroke-linecap="round" stroke-linejoin="round" />
+                        </svg>
+                    </button>
+
+                </form>
+
+                <div class="auth-divider">
+                    <div class="auth-divider-line"></div>
+                    <span>or</span>
+                    <div class="auth-divider-line"></div>
+                </div>
+
+            </div>
+
+            <!-- Footer link -->
+            <p class="at-auth-footer">
+                New student? <a href="./studentReg.html">Create an account</a>
+            </p>
+        </main>
+
+    </div>
+
+    <script>
+        /*
+         * Login form validation
+         * TODO (Nifemi): hook up Supabase auth here.
+         * validateForm() runs on submit — displays inline errors,
+         * prevents navigation until all fields are valid.
+         */
+
+        const MATRIC_REGEX = /^\d{4}\/\d{4,8}$/;
+
+        /* Error icon SVG — reused in multiple places */
+        const errIcon = `<svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+      <circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.2"/>
+      <line x1="6" y1="3.5" x2="6" y2="6.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+      <circle cx="6" cy="8.5" r="0.65" fill="currentColor"/>
+    </svg>`;
+
+        function setError(inputId, errId, message) {
+            const input = document.getElementById(inputId);
+            const err = document.getElementById(errId);
+            input.classList.add('is-error');
+            err.innerHTML = errIcon + ' ' + message;
+        }
+
+        function clearError(inputId, errId) {
+            const input = document.getElementById(inputId);
+            const err = document.getElementById(errId);
+            input.classList.remove('is-error');
+            err.innerHTML = '';
+        }
+
+        function validateForm() {
+            const name = document.getElementById('fullName').value.trim();
+            const matric = document.getElementById('matricNo').value.trim();
+            let valid = true;
+
+            /* Full name */
+            if (!name) {
+                setError('fullName', 'fullName-err', 'Please enter your full name');
+                valid = false;
+            } else if (name.split(' ').length < 2) {
+                setError('fullName', 'fullName-err', 'Please enter your first and last name');
+                valid = false;
+            } else {
+                clearError('fullName', 'fullName-err');
+            }
+
+            /* Matric number */
+            if (!matric) {
+                setError('matricNo', 'matricNo-err', 'Please enter your matric number');
+                valid = false;
+            } else if (!MATRIC_REGEX.test(matric)) {
+                setError('matricNo', 'matricNo-err', 'Use format YYYY/NNNNNN — e.g. 2020/123456');
+                valid = false;
+            } else {
+                clearError('matricNo', 'matricNo-err');
+            }
+
+            return valid;
+        }
+
+        /* Clear error on input so it feels responsive */
+        document.getElementById('fullName').addEventListener('input', () => clearError('fullName', 'fullName-err'));
+        document.getElementById('matricNo').addEventListener('input', () => clearError('matricNo', 'matricNo-err'));
+
+        document.getElementById('loginForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+            if (validateForm()) {
+                /* TODO: replace with Supabase signIn call */
+                window.location.href = './studentDashboard.html';
+            }
+        });
+    </script>
+
+</body>
+
+</html>

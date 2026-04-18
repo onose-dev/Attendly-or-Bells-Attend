@@ -1,53 +1,242 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>/Student-Registration</title>
+    <title>Attendly — Student Registration</title>
+    <link rel="stylesheet" href="../Shared/attendly-tokens.css">
+    <style>
+        /*
+     * ─────────────────────────────────────────────
+     *  studentRegistration.html — Step 1 of 4
+     *  Alpha dev: var(--alpha-dev)
+     * ─────────────────────────────────────────────
+     */
+    </style>
 </head>
+
 <body>
-    <h1>Student Registration</h1>
-        <p>Enter your academic details exatly as they appear on your admission letter to synchronize with the Digital Registry</p>
-            <form action="post">
-            <div class="inputContainer">
-                <label for="fulName">
-                    Full Name
-                </label>
-                <input type="text" placeholder="e.g : Ebube Chkwudi John" id="fullName" name="fullName">
-                <div class="err"></div>
+
+    <div class="at-page">
+
+        <!-- Top bar -->
+        <header class="at-topbar">
+            <a class="at-back-btn" href="./studentLogin.html" aria-label="Back to sign in">
+                <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                    <path d="M10 3L5 8l5 5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                        stroke-linejoin="round" />
+                </svg>
+            </a>
+            <span class="at-topbar-title">Create account</span>
+        </header>
+
+        <!-- Step progress: 1 of 4 -->
+        <nav class="at-steps" aria-label="Registration progress">
+            <div class="at-step is-active" aria-current="step">
+                <div class="at-step-num" aria-hidden="true">1</div>
+                <span class="at-step-label">Details</span>
             </div>
-            <div class="inputContainer">
-                <label for="Level">
-                    Level
-                </label>
-                <select name="Level" id="Level">
-                    <option value="100">100</option>
-                    <option value="200">200</option>
-                    <option value="300">300</option>
-                    <option value="400">400</option>
-                </select>
-                <div class="err"></div>
+            <div class="at-step-connector" aria-hidden="true"></div>
+            <div class="at-step">
+                <div class="at-step-num" aria-hidden="true">2</div>
+                <span class="at-step-label">Courses</span>
             </div>
-            <div class="inputContainer">
-                <label for="college">
-                    College
-                </label>
-                <select name="college" id="college">
-                    <option value="COLENG">COLENG</option>
-                    <option value="COLNAS">COLNAS</option>
-                    <option value="COLFAST">COLFAST</option>
-                    <option value="COLCOMP">COLCOMP</option>
-                </select>
-                <div class="err"></div>
+            <div class="at-step-connector" aria-hidden="true"></div>
+            <div class="at-step">
+                <div class="at-step-num" aria-hidden="true">3</div>
+                <span class="at-step-label">Permissions</span>
             </div>
-            <div class="inputContainer">
-                <label for="Department">
-                    Department
-                </label>
-                <input type="text" placeholder="e.g : Computer Science" id="Department" name="Department">
-                <div class="err"></div>
+            <div class="at-step-connector" aria-hidden="true"></div>
+            <div class="at-step">
+                <div class="at-step-num" aria-hidden="true">4</div>
+                <span class="at-step-label">Done</span>
             </div>
-                <button>Register</button>
+        </nav>
+
+        <main class="at-main">
+
+            <!-- Heading -->
+            <h1 class="at-page-title">Your academic details</h1>
+            <p class="at-page-subtitle">Enter your details exactly as they appear on your admission letter to
+                synchronise with the Digital Registry.</p>
+
+            <!-- Locked-data notice -->
+            <div class="at-info-box" style="margin-bottom: var(--space-6);">
+                <!-- Info icon -->
+                <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                    <circle cx="7" cy="7" r="6" stroke="currentColor" stroke-width="1.2" />
+                    <line x1="7" y1="6" x2="7" y2="10.5" stroke="currentColor" stroke-width="1.3"
+                        stroke-linecap="round" />
+                    <circle cx="7" cy="4" r="0.7" fill="currentColor" />
+                </svg>
+                <p>These details will be locked after submission. Any corrections will require contacting your
+                    administrator.</p>
+            </div>
+
+            <!-- Registration form -->
+            <form class="at-form" id="regForm" novalidate>
+
+                <!-- Full Name -->
+                <div class="at-field">
+                    <label class="at-label" for="fullName">
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                            <circle cx="7" cy="4.5" r="2.5" stroke="currentColor" stroke-width="1.3" />
+                            <path d="M2 13c0-2.761 2.239-5 5-5s5 2.239 5 5" stroke="currentColor" stroke-width="1.3"
+                                stroke-linecap="round" />
+                        </svg>
+                        Full Name
+                    </label>
+                    <input class="at-input" type="text" id="fullName" name="fullName"
+                        placeholder="e.g. Ebube Chukwudi John" autocomplete="name" aria-describedby="fullName-err"
+                        required />
+                    <div class="at-field-error" id="fullName-err" role="alert" aria-live="polite"></div>
+                </div>
+
+                <!-- Level + College (side by side on wider screens, stacked on narrow) -->
+                <div class="at-row-2">
+
+                    <div class="at-field">
+                        <label class="at-label" for="level">Level</label>
+                        <select class="at-select" id="level" name="level" aria-describedby="level-err" required>
+                            <option value="">Select level</option>
+                            <option value="100">100L</option>
+                            <option value="200">200L</option>
+                            <option value="300">300L</option>
+                            <option value="400">400L</option>
+                            <option value="500">500L</option>
+                        </select>
+                        <div class="at-field-error" id="level-err" role="alert" aria-live="polite"></div>
+                    </div>
+
+                    <div class="at-field">
+                        <label class="at-label" for="college">College</label>
+                        <select class="at-select" id="college" name="college" aria-describedby="college-err" required>
+                            <option value="">Select college</option>
+                            <option value="COLENG">COLENG</option>
+                            <option value="COLNAS">COLNAS</option>
+                            <option value="COLFAST">COLFAST</option>
+                            <option value="COLCOMP">COLCOMP</option>
+                        </select>
+                        <div class="at-field-error" id="college-err" role="alert" aria-live="polite"></div>
+                    </div>
+
+                </div>
+
+                <!-- Department -->
+                <div class="at-field">
+                    <label class="at-label" for="department">
+                        <!-- Building icon -->
+                        <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true">
+                            <rect x="2" y="3" width="10" height="9" rx="1" stroke="currentColor" stroke-width="1.3" />
+                            <path d="M5 12V8h4v4" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"
+                                stroke-linejoin="round" />
+                            <line x1="2" y1="6" x2="12" y2="6" stroke="currentColor" stroke-width="1.1"
+                                stroke-linecap="round" />
+                            <rect x="5" y="3" width="4" height="2" fill="currentColor" opacity="0.15" />
+                        </svg>
+                        Department
+                    </label>
+                    <input class="at-input" type="text" id="department" name="department"
+                        placeholder="e.g. Computer Science" aria-describedby="department-err" required />
+                    <div class="at-field-error" id="department-err" role="alert" aria-live="polite"></div>
+                </div>
+
+                <!-- Submit -->
+                <button class="at-btn at-btn-primary" type="submit" style="margin-top: var(--space-2);">
+                    Next — Select courses
+                    <svg width="16" height="16" viewBox="0 0 16 16" fill="none" aria-hidden="true">
+                        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"
+                            stroke-linejoin="round" />
+                    </svg>
+                </button>
+
             </form>
+
+            <p class="at-auth-footer">Already registered? <a href="./studentLogin.html">Sign in</a></p>
+
+        </main>
+    </div>
+
+    <script>
+        /*
+         * Registration Step 1 — Validation & Navigation
+         * TODO (Nifemi): On valid submit, persist form data to
+         * sessionStorage so step 2 can access it, then do the
+         * actual Supabase insert at the end of step 4.
+         */
+
+        const errIcon = `<svg width="12" height="12" viewBox="0 0 12 12" fill="none" aria-hidden="true">
+      <circle cx="6" cy="6" r="5" stroke="currentColor" stroke-width="1.2"/>
+      <line x1="6" y1="3.5" x2="6" y2="6.5" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"/>
+      <circle cx="6" cy="8.5" r="0.65" fill="currentColor"/>
+    </svg>`;
+
+        function setError(id, errId, msg) {
+            document.getElementById(id).classList.add('is-error');
+            document.getElementById(errId).innerHTML = errIcon + ' ' + msg;
+        }
+
+        function clearError(id, errId) {
+            document.getElementById(id).classList.remove('is-error');
+            document.getElementById(errId).innerHTML = '';
+        }
+
+        /* Live clearing on input / change */
+        ['fullName', 'level', 'college', 'department'].forEach(id => {
+            const el = document.getElementById(id);
+            el.addEventListener('input', () => clearError(id, id + '-err'));
+            el.addEventListener('change', () => clearError(id, id + '-err'));
+        });
+
+        document.getElementById('regForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const fullName = document.getElementById('fullName').value.trim();
+            const level = document.getElementById('level').value;
+            const college = document.getElementById('college').value;
+            const department = document.getElementById('department').value.trim();
+            let valid = true;
+
+            if (!fullName) {
+                setError('fullName', 'fullName-err', 'Please enter your full name');
+                valid = false;
+            } else if (fullName.split(' ').filter(Boolean).length < 2) {
+                setError('fullName', 'fullName-err', 'Please enter at least a first and last name');
+                valid = false;
+            } else {
+                clearError('fullName', 'fullName-err');
+            }
+
+            if (!level) {
+                setError('level', 'level-err', 'Please select your level');
+                valid = false;
+            } else {
+                clearError('level', 'level-err');
+            }
+
+            if (!college) {
+                setError('college', 'college-err', 'Please select your college');
+                valid = false;
+            } else {
+                clearError('college', 'college-err');
+            }
+
+            if (!department) {
+                setError('department', 'department-err', 'Please enter your department');
+                valid = false;
+            } else {
+                clearError('department', 'department-err');
+            }
+
+            if (valid) {
+                /* Persist to sessionStorage for use in later steps */
+                sessionStorage.setItem('reg_step1', JSON.stringify({ fullName, level, college, department }));
+                window.location.href = './studentCourseReg.html';
+            }
+        });
+    </script>
+
 </body>
+
 </html>
